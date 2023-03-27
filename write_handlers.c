@@ -1,7 +1,6 @@
 #include "main.h"
 
 /************************* WRITE HANDLE *************************/
-
 /**
  * handle_write_char - Prints a string
  * @c: char types.
@@ -41,6 +40,7 @@ else
 return (write(1, &buffer[BUFF_SIZE - i - 1], width - 1) +
 write(1, &buffer[0], 1));
 }
+
 return (write(1, &buffer[0], 1));
 }
 
@@ -111,6 +111,7 @@ if (width > length)
 {
 for (i = 1; i < width - length + 1; i++)
 buffer[i] = padd;
+
 buffer[i] = '\0';
 if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
 {
@@ -171,6 +172,7 @@ while (precision > length)
 buffer[--ind] = '0';
 length++;
 }
+
 if ((flags & F_ZERO) && !(flags & F_MINUS))
 padd = '0';
 
@@ -190,6 +192,7 @@ else /* Asign extra char to left of padding [padd>buffer]*/
 return (write(1, &buffer[0], i) + write(1, &buffer[ind], length));
 }
 }
+
 return (write(1, &buffer[ind], length));
 }
 
@@ -206,10 +209,9 @@ return (write(1, &buffer[ind], length));
  *
  * Return: Number of written chars.
  */
-int write_pointer(char buffer[], int ind, int length
+int write_pointer(char buffer[], int ind, int length,
 int width, int flags, char padd, char extra_c, int padd_start)
 {
-
 int i;
 
 if (width > length)
@@ -226,6 +228,7 @@ buffer[--ind] = extra_c;
 return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
 }
 else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */
+{
 buffer[--ind] = 'x';
 buffer[--ind] = '0';
 if (extra_c)

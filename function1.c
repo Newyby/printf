@@ -68,6 +68,7 @@ while (num > 0)
 buffer[i--] = (num % 8) + '0';
 num /= 8;
 }
+
 if (flags & F_HASH && init_num != 0)
 buffer[i--] = '0';
 
@@ -90,7 +91,7 @@ return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 int print_hexadecimal(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-return (print_hexa(types, "0123456789abcdef", buffer
+return (print_hexa(types, "0123456789abcdef", buffer,
 flags, 'x', width, precision, size));
 }
 
@@ -147,6 +148,7 @@ while (num > 0)
 buffer[i--] = map_to[num % 16];
 num /= 16;
 }
+
 if (flags & F_HASH && init_num != 0)
 {
 buffer[i--] = flag_ch;
